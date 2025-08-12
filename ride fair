@@ -1,0 +1,42 @@
+class Ride {
+ double distance; // in km
+ double ratePerKm;
+ bool peakHour;
+
+
+ Ride({required this.distance, required this.ratePerKm, required this.peakHour});
+
+
+ double calculateFare() {
+   double baseFare = distance * ratePerKm;
+   if (peakHour) {
+     return baseFare * 1.20; // 20% surcharge
+   }
+   return baseFare;
+ }
+}
+
+
+void main() {
+ // Create a list of 3 rides
+ List<Ride> rides = [
+   Ride(distance: 10.5, ratePerKm: 2.5, peakHour: false),
+   Ride(distance: 5.0, ratePerKm: 3.0, peakHour: true),
+   Ride(distance: 15.2, ratePerKm: 2.0, peakHour: false),
+ ];
+
+
+ double totalEarnings = 0.0;
+
+
+ // Print each ride's fare and calculate total earnings
+ for (int i = 0; i < rides.length; i++) {
+   double fare = rides[i].calculateFare();
+   print('Ride ${i + 1} Fare: \$${fare.toStringAsFixed(2)}');
+   totalEarnings += fare;
+ }
+
+
+ // Print the total earnings
+ print('\nTotal Earnings for all rides: \$${totalEarnings.toStringAsFixed(2)}');
+}
