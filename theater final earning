@@ -1,0 +1,53 @@
+void main() {
+ // Step 1: Create a list of maps for cinema bookings
+ List<Map<String, dynamic>> bookings = [
+   {
+     "movieName": "Avengers: Endgame",
+     "ticketsBooked": 5,
+     "pricePerTicket": 250.0
+   },
+   {
+     "movieName": "The Batman",
+     "ticketsBooked": 3,
+     "pricePerTicket": 200.0
+   },
+   {
+     "movieName": "Oppenheimer",
+     "ticketsBooked": 4,
+     "pricePerTicket": 300.0
+   }
+ ];
+
+
+ double grandTotal = 0;
+
+
+ print("===== Cinema Hall Booking Summary =====\n");
+
+
+ // Step 2: Loop through each booking
+ for (var booking in bookings) {
+   String movieName = booking["movieName"];
+   int tickets = booking["ticketsBooked"];
+   double price = booking["pricePerTicket"];
+
+
+   // Step 3: Calculate total cost for each booking
+   double totalCost = tickets * price;
+   grandTotal += totalCost;
+
+
+   // Step 4: Display booking details
+   print("Movie: $movieName");
+   print("Tickets Booked: $tickets");
+   print("Price per Ticket: ₹${price.toStringAsFixed(2)}");
+   print("Total Cost: ₹${totalCost.toStringAsFixed(2)}\n");
+ }
+
+
+ // Step 5: Display grand total
+ print("===== Grand Total Earnings =====");
+ print("₹${grandTotal.toStringAsFixed(2)}");
+}
+
+
